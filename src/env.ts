@@ -2,7 +2,9 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
 export const env = createEnv({
-	server: {},
+	server: {
+		DATABASE_URL: z.string().url(),
+	},
 	client: {
 		// NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),
 		NEXT_PUBLIC_BASE_URL: z.string(),
