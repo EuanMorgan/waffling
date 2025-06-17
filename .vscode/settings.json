@@ -4,7 +4,8 @@
 
 	"editor.codeActionsOnSave": {
 		"source.organizeImports.biome": "explicit",
-		"source.fixAll.biome": "explicit"
+		"source.fixAll.biome": "explicit",
+		"source.action.useSortedKeys.biome": "explicit"
 	},
 	"tailwindCSS.experimental.classRegex": [
 		["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
