@@ -48,28 +48,25 @@ export const SignUpView = () => {
 	const onSubmit = (data: z.infer<typeof schema>) => {
 		setError(null);
 		setPending(true);
-		try {
-			authClient.signUp.email(
-				{
-					name: data.name,
-					email: data.email,
-					password: data.password,
+
+		authClient.signUp.email(
+			{
+				name: data.name,
+				email: data.email,
+				password: data.password,
+			},
+			{
+				onSuccess: () => {
+					router.push("/");
 				},
-				{
-					onSuccess: () => {
-						router.push("/");
-					},
-					onError: ({ error }) => {
-						setError(error.message ?? "An error occurred");
-					},
-					onResponse: () => {
-						setPending(false);
-					},
+				onError: ({ error }) => {
+					setError(error.message ?? "An error occurred");
 				},
-			);
-		} catch (_) {
-			setError("An error occurred");
-		}
+				onResponse: () => {
+					setPending(false);
+				},
+			},
+		);
 	};
 
 	return (
@@ -164,7 +161,7 @@ export const SignUpView = () => {
 									</Alert>
 								)}
 								<Button disabled={pending} type="submit" className="w-full">
-									Sign In
+									Sign Up
 								</Button>
 								<div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
 									<span className="bg-card text-muted-foreground relative z-10 px-2">
